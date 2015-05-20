@@ -1,0 +1,13 @@
+config SND_AML_M3
+	tristate "M3 evaluation board with internal audio codec"
+	depends on SND_AML_M3_SOC
+	
+config SND_AML_M3_PCM
+	tristate "M3 evaluation board with PCM2BT"
+	depends on SND_AML_M3
+	select SND_SOC_PCM2BT if SND_AML_M3_PCM
+	
+config SND_AML_M3_CS4334
+    tristate "AMLM3 board with CS4334"
+    depends on SND_AML_M3_SOC
+    select SND_SOC_CS4334 if SND_AML_M3_CS4334

@@ -1,0 +1,18 @@
+
+config AMLOGIC_OLD_REG_FUNC
+	depends on ARCH_MESON3
+	bool "Amlogic old reg operation compitable"
+	default n
+	help
+		You should replace the register operation with 
+		writel/readl/setbits_le32/clrbits_le32/clrsetbits_le32.
+		the register name must be replace with P_REG_NAME . 
+		REG_NAME is the old stlye reg name .
+config AMLOGIC_PLAT_API_TEST
+	depends on ARCH_MESON3
+	bool "Plat api structure "
+	default n
+	help 
+		This is the test purpose for new structure of Soc and BSP issues
+		
+	
