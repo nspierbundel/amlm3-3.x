@@ -222,7 +222,7 @@ sub_file /drivers/amlogic/display/vout2/aml.dtd
 ///	-	EARLY_INIT
 //$$ MODULE="early_init"
 #device early_init
-sub_file /drivers/amlogic/early_init/aml.dtd
+#sub_file /drivers/amlogic/early_init/aml.dtd
 
 /// ***************************************************************************************
 ///	-	RTC
@@ -348,7 +348,7 @@ sub_file /drivers/amlogic/spi_nor/aml.dtd
 #ifdef CONFIG_ARCH_MESON8
 sub_file /drivers/amlogic/amlnf/dev/aml.dtd
 #else
-sub_file /drivers/amlogic/nand/aml.dtd
+sub_file /drivers/amlogic/nand/nand/aml.dtd
 #endif
 
 /// ***************************************************************************************
@@ -375,9 +375,9 @@ sub_file /drivers/amlogic/keymanage/aml.dtd
 ///	-	PowerManager
 //$$ MODULE="PowerManager"
 #ifdef CONFIG_ARCH_MESON8
-sub_file /arch/arm/mach-meson8/aml_pm.dtd
+#sub_file /arch/arm/mach-meson8/aml_pm.dtd
 #else
-sub_file /arch/arm/mach-meson6/aml_pm.dtd
+#sub_file /arch/arm/mach-meson6/aml_pm.dtd
 #endif
 
 /// ***************************************************************************************

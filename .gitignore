@@ -94,3 +94,8 @@ x509.genkey
 
 # customer folder
 customer
+
+boot.img
+deploy
+arch/arm/boot/meson.dtd
+env.sh
