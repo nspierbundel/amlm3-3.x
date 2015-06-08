@@ -98,4 +98,6 @@ customer
 boot.img
 deploy
 arch/arm/boot/meson.dtd
+arch/arm/boot/dts/amlogic/meson3_f16.dts
+aml_dtd_tmp
 env.sh

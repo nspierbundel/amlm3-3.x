@@ -396,6 +396,11 @@ struct aml_nand_chip {
 	u8 internal_chipnr;
 	unsigned internal_page_nums;
 
+        unsigned int update_env_flag;
+        unsigned int              ran_mode;                        //def close, for all part
+        unsigned int              rbpin_mode;                              //may get from romboot
+        unsigned int              rbpin_detect;                            //add for rbpin auto detect
+        unsigned int              short_pgsz;                      //zero means no short
 	unsigned internal_chip_shift;
 	unsigned bch_mode;
 	u8 user_byte_mode;
@@ -417,12 +422,19 @@ struct aml_nand_chip {
     struct semaphore nand_sem;
     int lock_state;
 #endif
-
+        u8 ecc_cnt_limit;
+        u8 ecc_cnt_cur;
+        u8 ecc_max;
+        unsigned int             toggle_mode;
+     unsigned zero_cnt;
+        unsigned oob_fill_cnt;
 	struct mtd_info			mtd;
 	struct nand_chip		chip;
 	struct aml_nandenv_info_t *aml_nandenv_info;
 	struct aml_nand_bch_desc 	*bch_desc;
-
+#ifdef NEW_NAND_SUPPORT
+        struct new_tech_nand_t  new_nand_info;
+#endif
 	/* platform info */
 	struct aml_nand_platform	*platform;
 
@@ -433,6 +445,7 @@ struct aml_nand_chip {
 	struct cdev				nand_env_cdev;
 
 	struct early_suspend nand_early_suspend;
+    struct class      cls;
 
 	//plateform operation function
 	void	(*aml_nand_hw_init)(struct aml_nand_chip *aml_chip);
@@ -458,6 +471,10 @@ struct aml_nand_platform {
 
 		unsigned T_REA;
 		unsigned T_RHOH;
+                unsigned int              ran_mode;                        //def close, for all part
+                unsigned int              rbpin_mode;                              //may get from romboot
+                unsigned int              rbpin_detect;
+                unsigned int              short_pgsz;                      //zero means no short
 		 		
 		 struct aml_nand_chip  *aml_chip;
          struct platform_nand_data platform_nand_data;
